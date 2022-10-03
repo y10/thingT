@@ -1,0 +1,23 @@
+{
+    "C_Cpp.intelliSenseEngine": "Default",
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 2, ColumnLimit: 0}",
+    "files.exclude":
+    {
+        "node_modules/": true,
+        ".bin/": true
+    },
+    "cmake.configureOnOpen": false,
+    "files.associations": {
+        "*.ino": "cpp",
+        "regex": "cpp",
+        "functional": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "optional": "cpp"
+    }
+}
