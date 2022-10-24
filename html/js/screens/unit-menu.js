@@ -38,6 +38,7 @@ button {
 
 <div class="container">
   <button id="test">test</button>
+  <button id="servos">servos</button>
   <button id="setup">setup</button>
   <button id="update">firmware update</button>
   <button id="reset">factory reset</button>
@@ -53,6 +54,7 @@ export class UnitMenu extends HTMLElement {
       $("#restart").on("click", this.restart.bind(this));
       $("#update").on("click", this.gotoUpdate.bind(this));
       $("#setup").on("click", this.gotoSetup.bind(this));
+      $("#servos").on("click", this.gotoServos.bind(this));
       $("#test").on("click", this.gotoTest.bind(this));
     });
   }
@@ -67,6 +69,10 @@ export class UnitMenu extends HTMLElement {
 
   gotoUpdate() {
     Router.navigate("update");
+  }
+
+  gotoServos() {
+    Router.navigate("servos");
   }
 
   gotoTest() {

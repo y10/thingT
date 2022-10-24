@@ -36,7 +36,7 @@ button {
 </style>
 <div class="container">
   <button id="h5">High 5</button>
-  <button id="hm">Rock</button>
+  <button id="hm">Rock U</button>
   <button id="fu">Welcome</button>
   <button id="v">Victory</button>
 </div>
@@ -46,7 +46,7 @@ export class Gestures extends HTMLElement {
     this.jQuery = jQuery(this).attachShadowTemplate(html, ($) => {
       $("#h5").on("click", (e) => this.onHiFive());
       $("#hm").on("click", (e) => this.onHeavyMetal());
-      $("#fy").on("click", (e) => this.onFuckYou());
+      $("#fu").on("click", (e) => this.onFuckYou());
       $("#v").on("click", (e) => this.onVictory());
     });
   }
@@ -66,7 +66,7 @@ export class Gestures extends HTMLElement {
     await Http.json("GET", `api/servo/all/position?v=0`);
     await Http.json("GET", `api/servo/4/position?v=180`);
     await Http.json("GET", `api/servo/3/position?v=180`);
-    await Http.json("GET", `api/servo/2/position?v=180`);
+    await Http.json("GET", `api/servo/1/position?v=180`);
     await Http.json("GET", `api/servo/0/position?v=180`);
   }
 

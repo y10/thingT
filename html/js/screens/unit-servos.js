@@ -49,7 +49,7 @@ input {
 
 </style>
 `;
-export class UnitTest extends HTMLElement {
+export class UnitServos extends HTMLElement {
   connectedCallback() {
     this.jQuery = jQuery(this).attachShadowTemplate(style + html, async ($) => {
       this.sldThumb = $("#thumb");

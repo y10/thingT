@@ -23,7 +23,8 @@ Module.register({
             'menu': 'unit-menu'
         },
         './js/setup.js': {
-            'test': 'unit-test',
+            'test': 'unit-test-list',
+            'servos': 'unit-servos',
             'update': 'unit-update',
             'setup': 'unit-setup',
         }
