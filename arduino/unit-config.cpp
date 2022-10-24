@@ -25,7 +25,7 @@ UnitConfig::UnitConfig() {
   disp_name = "Thing T.";
   host_name = "ThingT-" + String(getChipId(), HEX);
   full_name = "ThingT-v" + (String)SKETCH_VERSION_MAJOR + "." + (String)SKETCH_VERSION_MINOR + "." + (String)SKETCH_VERSION_RELEASE + "_" + String(getChipId(), HEX);
-  version = 1;
+  ver = 0;
 }
 
 const String UnitConfig::hostname(const char *name) {
@@ -63,7 +63,7 @@ void UnitConfig::load() {
     host_name = cfg.host_name;
     console.print("[unit] revision: ");
     console.println(cfg.version);
-    version = cfg.version;
+    ver = cfg.version;
   } else {
     console.println("[unit] no config found.");
   }
@@ -74,7 +74,7 @@ void UnitConfig::save() {
   strcpy(cfg.disp_name, disp_name.c_str());
   strcpy(cfg.host_name, host_name.c_str());
   strcpy(cfg.full_name, full_name.c_str());
-  cfg.version = version + 1;
+  cfg.version = ver + 1;
   console.println("[unit] save");
   EEPROM.put(0, cfg);
   EEPROM.commit();

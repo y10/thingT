@@ -80,8 +80,8 @@ boolean captivePortal(AsyncWebServerRequest *request) {
 
 void setupHttp() {
   http.on("/", [&](AsyncWebServerRequest *request) { gzip(request, "text/html", SKETCH_INDEX_HTML_GZ, sizeof(SKETCH_INDEX_HTML_GZ)); });
-  http.on("/favicon.png", [&](AsyncWebServerRequest *rqt) { gzip(rqt, "image/png", SKETCH_FAVICON_PNG_GZ, sizeof(SKETCH_FAVICON_PNG_GZ)); });
-  http.on("/apple-touch-icon.png", [&](AsyncWebServerRequest *rqt) { gzip(rqt, "image/png", SKETCH_APPLE_TOUCH_ICON_PNG_GZ, sizeof(SKETCH_APPLE_TOUCH_ICON_PNG_GZ)); });
+  http.on("/favicon.svg", [&](AsyncWebServerRequest *rqt) { gzip(rqt, "image/svg", SKETCH_FAVICON_SVG_GZ, sizeof(SKETCH_FAVICON_SVG_GZ)); });
+  http.on("/favicon.jpg", [&](AsyncWebServerRequest *rqt) { gzip(rqt, "image/jpg", SKETCH_FAVICON_JPG_GZ, sizeof(SKETCH_FAVICON_JPG_GZ)); });
   http.on("/manifest.json", [&](AsyncWebServerRequest *rqt) { gzip(rqt, "application/json", SKETCH_MANIFEST_JSON_GZ, sizeof(SKETCH_MANIFEST_JSON_GZ)); });
   http.on("/js/setup.js", [&](AsyncWebServerRequest *rqt) { gzip(rqt, "application/javascript", SKETCH_SETUP_JS_GZ, sizeof(SKETCH_SETUP_JS_GZ)); });
 
@@ -92,6 +92,14 @@ void setupHttp() {
   http.on("/api/servo/{}/state", ASYNC_HTTP_GET, [&](AsyncWebServerRequest *request) {
     uint8_t idx = request->pathArg(0).toInt();
     json(request, Unit.toJSON(idx));
+  });
+
+
+  http.on("/api/servo/all/position", ASYNC_HTTP_GET, [&](AsyncWebServerRequest *request) {
+    uint8_t pos = request->hasArg("v") ? request->arg("v").toInt() : 0;
+    Serial.println("GET: /api/servo/all/position?v=" + (String)pos);
+    Unit.motor(pos);
+    json(request, Unit.toJSON());
   });
 
   http.on("/api/servo/{}/position", ASYNC_HTTP_GET, [&](AsyncWebServerRequest *request) {
@@ -138,6 +146,7 @@ void setupHttp() {
     }
   });
 
+  /*
   ws.onEvent([&](AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len) {
     IPAddress ip = client->remoteIP();
     uint32_t id = client->id();
@@ -159,8 +168,8 @@ void setupHttp() {
         break;
     }
   });
-
   http.addHandler(&ws);
+  */
 
   http.begin();
   Serial.println("[http] Started.");

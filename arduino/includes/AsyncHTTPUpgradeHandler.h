@@ -12,7 +12,7 @@
 const char OTA_REQUEST_TEMPLATE[] PROGMEM =
     "GET %s HTTP/1.1\r\n"
     "Host: %s\r\n"
-    "User-Agent: Sprinkler\r\n"
+    "User-Agent: ThingT\r\n"
     "Connection: close\r\n"
     "Content-Type: application/x-www-form-urlencoded\r\n"
     "Content-Length: 0\r\n\r\n\r\n";

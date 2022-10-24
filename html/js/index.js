@@ -3,7 +3,7 @@ import { Module } from "./system/module";
 import { Index } from "./screens/index";
 import { UnitControl } from "./screens/unit";
 import { UnitMenu } from "./screens/unit-menu";
-import { UnitServos } from "./screens/unit-servos";
+import { Gestures } from "./screens/gestures";
 
 import { MenuToggle } from "./controls/menu-toggle";
 import { MenuBottom } from "./controls/menu-bottom";
@@ -15,8 +15,6 @@ import { Outlet } from "./controls/outlet";
 
 import "./system/touch";
 import "./system/key";
-import "./system/log";
-
 
 Module.register({
     'sketch-outlet': Outlet.forRoot({
@@ -25,6 +23,7 @@ Module.register({
             'menu': 'unit-menu'
         },
         './js/setup.js': {
+            'test': 'unit-test',
             'update': 'unit-update',
             'setup': 'unit-setup',
         }
@@ -36,7 +35,7 @@ Module.register({
     'sketch-menu-toggle': MenuToggle,
     'sketch-menu-bottom': MenuBottom,
     'unit-control': UnitControl,
-    'unit-servos': UnitServos,
+    'unit-gestures': Gestures,
     'unit-menu': UnitMenu,
     'unit-outlet': Index,
 })

@@ -20,6 +20,15 @@ If you like my **Thing T. Thing**, give it a star, or fork it and contribute!
 
 Happy coding.
 
+## Links
+* [Hand robot InMoov by Gael_Langevin - Thingiverse](https://www.thingiverse.com/thing:17773)
+* [Simple Servo Bed for InMoov by Gael_Langevin - Thingiverse](https://www.thingiverse.com/thing:65274)
+* [Inmoov Robot Rotation Wrist by Gael_Langevin - Thingiverse](https://www.thingiverse.com/thing:25149)
+* [Inmoov hand and forarm (STEP BY STEP tutorial) - YouTube](https://www.youtube.com/watch?v=4t1daCFQ1OE)
+* [DIY Prosthetic Hand & Forearm (Voice Controlled) - 14 Steps (with Pictures)](https://www.instructables.com/Voice-Controlled-Prosthetic-Hand-Forearm/)
+* [Using Servo Motors with the ESP32](https://dronebotworkshop.com/esp32-servo/)
+* [Hand and Forarm - InMoov](http://inmoov.fr/hand-and-forarm/)
+
 ## Disclaimer
 
 :warning: **DANGER OF ELECTROCUTION** :warning:
@@ -28,5 +37,5 @@ If your device connects to mains electricity (AC power) there is danger of elect
 
 We don't take any responsibility nor liability for using this software nor for the installation or any tips, advice, videos, etc. given by any member of this site or any related site.
 
-## 
+## The hand
 ![Image 1](/docs/Image_1.jpg)

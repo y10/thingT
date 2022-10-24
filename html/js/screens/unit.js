@@ -1,7 +1,7 @@
 import { Router } from "../system/router";
 import { jQuery } from "../system/jquery";
 
-const template = `<unit-servos></unit-servos>`;
+const template = `<unit-gestures></unit-gestures>`;
 export class UnitControl extends HTMLElement {
   connectedCallback() {
     this.jQuery = jQuery(this).attachShadowTemplate(template, ($) => {

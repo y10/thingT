@@ -6,5 +6,6 @@
     "postbuild": "publish",
     "intelliSenseGen": "disable",
     "sketch": "arduino\\arduino.ino",
-    "output": ".bin"
+    "output": ".bin",
+    "programmer": "esp32:esptool"
 }

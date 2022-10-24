@@ -1,11 +1,11 @@
 {
-    "short_name": "Sprinkler",
-    "name": "Sprinkler Controller and Timer",
+    "short_name": "ThingT",
+    "name": "Thing T. Thing",
     "icons": [
         {
-            "src": "/favicon.png",
+            "src": "/favicon.svg",
             "sizes": "180x180",
-            "type": "image/png"
+            "type": "image/svg"
         }
     ],
     "start_url": "/",

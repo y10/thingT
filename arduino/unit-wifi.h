@@ -30,7 +30,7 @@ String getPSK() {
   return String(reinterpret_cast<char*>(conf.sta.password));
 }
 
-void disableWifi() {
+bool disableWifi() {
   // disable wifi if already on
   if (WiFi.getMode() & WIFI_STA) {
     WiFi.mode(WIFI_OFF);
@@ -40,6 +40,8 @@ void disableWifi() {
       delay(0);
     }
   }
+
+  return true;
 }
 
 bool enableWifi() {
@@ -89,11 +91,13 @@ bool connectWifi(String ssid, String pass = "") {
 }
 
 void setupWifi() {
-  disableWifi();
-  if (!connectWifi()) {
-    if (!enableWifi()) {
-      ESP.restart();
-    }
+
+  if (Unit.isConfigured() && connectWifi()) {
+    return;
+  }
+
+  if (disableWifi() && !enableWifi()) {
+    ESP.restart();
   }
 }
 

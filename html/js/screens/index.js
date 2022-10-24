@@ -77,7 +77,7 @@ export class Index extends HTMLElement {
     }
 
     onNavigateFrom(e) {
-        if (e.detail.to == "main") {
+        if (e.detail.to == "unit") {
             this.$Toggle.item().close();
         }
         else if (e.detail.to == "menu") {

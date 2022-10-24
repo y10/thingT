@@ -16,7 +16,7 @@ private:
   String host_name;
   String disp_name;
   String full_name;
-  uint8_t version;
+  uint8_t ver;
 
 public:
   UnitConfig();
@@ -34,6 +34,8 @@ public:
   const String hostname(const char *name);
 
   const String fullname() const { return full_name; }
+
+  uint8_t version() const { return ver > 0; }
 
   void load();
 

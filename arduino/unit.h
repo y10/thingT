@@ -31,11 +31,13 @@ class UnitControl {
   const String hostname(const char *name) { return Config.hostname(name); }
   const String wifissid(bool persisted = false);
   const String wifipass(bool persisted = false);
+  bool isConfigured()const { return Config.version() > 0; }
 
   String toJSON();
   String toJSON(unsigned int index);
   bool fromJSON(JsonObject json);
 
+  void motor(unsigned int position);
   void motor(unsigned int index, unsigned int position);
 
   void attach();

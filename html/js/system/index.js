@@ -2,7 +2,6 @@ export * from "./jquery";
 export * from "./router";
 export * from "./status";
 export * from "./http";
-export * from "./wsc";
 
 export class String {
     static format00(value) {

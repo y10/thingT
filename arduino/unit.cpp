@@ -1,8 +1,8 @@
 #include "unit.h"
 
 #include <WiFi.h>
-#include <esp_wifi.h>
 #include <WsConsole.h>
+#include <esp_wifi.h>
 
 static WsConsole console("main");
 
@@ -35,6 +35,16 @@ void UnitControl::fireEvent(const char *eventType, const char *evenDescription) 
 
 void UnitControl::on(const char *eventType, OnEvent event) {
   onEventHandlers[eventType].push_back(event);
+}
+
+void UnitControl::motor(unsigned int position = 0) {
+  if (position >= 0 && position <= 360) {
+    for (size_t index = 0; index < 5; index++) {
+      console.println("Servo motor " + (String)index + " changed postition to: " + (String)position + " of " + sizeof(Servos));
+      Servos[index]->write(position);
+      fireEvent("state", "{ \"servos\": { \"" + (String)index + "\": " + (String)position + "} }");
+    }
+  }
 }
 
 void UnitControl::motor(unsigned int index, unsigned int position = 0) {
@@ -86,8 +96,13 @@ void UnitControl::attach() {
   uint8_t pins[] = {SR1_PIN, SR2_PIN, SR3_PIN, SR4_PIN, SR5_PIN};
   for (uint8_t i = 0; i < sizeof(pins); i++) {
     Servo *servo = Servos[i] = new Servo();
-    servo->setPeriodHertz(50);  // standard 50 hz servo
-    servo->attach(pins[i]);     //, 1000, 2000);
+    // standard 50 hz servo
+    servo->setPeriodHertz(50);
+    // Values for TowerPro MG995 large servos (and many other hobbyist servos)
+    //#define DEFAULT_uS_LOW 1000        
+    //#define DEFAULT_uS_HIGH 2000      
+    servo->attach(pins[i], 1000, 2000);
+    servo->write(0);
   }
 }
 

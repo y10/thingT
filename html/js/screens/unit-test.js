@@ -8,15 +8,15 @@ const html = `
     <h1>Servos</h1>
     <form>
         <p>Thumb</p>
-        <input type="range" min="0" max="180" value="-1" class="slider" id="thumb">
+        <input type="range" min="0" max="180" value="90" class="slider" id="thumb">
         <p>Index</p>
-        <input type="range" min="0" max="180" value="-1" class="slider" id="index">
+        <input type="range" min="0" max="180" value="90" class="slider" id="index">
         <p>Middle</p>
-        <input type="range" min="0" max="180" value="-1" class="slider" id="middle">
+        <input type="range" min="0" max="180" value="90" class="slider" id="middle">
         <p>Ring</p>
-        <input type="range" min="0" max="180" value="-1" class="slider" id="ring">
+        <input type="range" min="0" max="180" value="90" class="slider" id="ring">
         <p>Little</p>
-        <input type="range" min="0" max="180" value="-1" class="slider" id="little">
+        <input type="range" min="0" max="180" value="90" class="slider" id="little">
     </form>
 </div>
 `;
@@ -49,7 +49,7 @@ input {
 
 </style>
 `;
-export class UnitServos extends HTMLElement {
+export class UnitTest extends HTMLElement {
   connectedCallback() {
     this.jQuery = jQuery(this).attachShadowTemplate(style + html, async ($) => {
       this.sldThumb = $("#thumb");
@@ -59,6 +59,18 @@ export class UnitServos extends HTMLElement {
       this.sldIndex = $("#index");
       this.sldIndex.on("change", (e) =>
         this.onServoChange({ target: this.sldIndex.item(), index: 1 })
+      );
+      this.sldMiddle = $("#middle");
+      this.sldMiddle.on("change", (e) =>
+        this.onServoChange({ target: this.sldMiddle.item(), index: 2 })
+      );
+      this.sldRing = $("#ring");
+      this.sldRing.on("change", (e) =>
+        this.onServoChange({ target: this.sldRing.item(), index: 3 })
+      );
+      this.sldLittle = $("#little");
+      this.sldLittle.on("change", (e) =>
+        this.onServoChange({ target: this.sldLittle.item(), index: 4 })
       );
 
       try {
